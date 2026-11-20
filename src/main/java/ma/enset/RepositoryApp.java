@@ -11,8 +11,7 @@ import java.util.List;
  */
 public class RepositoryApp {
     public static void main(String[] args) {
-        AccountRepositoryImpl accountRepository = new AccountRepositoryImpl();
-        accountRepository.populateData();
+        AccountRepositoryImpl accountRepository = AccountRepositoryImpl.getInstance();        accountRepository.populateData();
 
         List<BankAccount> accounts = accountRepository.findAll();
         accounts.forEach(System.out::println);

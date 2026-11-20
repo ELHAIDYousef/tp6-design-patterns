@@ -43,8 +43,7 @@ public class BuilderApp {
         System.out.println(account4);
 
         System.out.println("---- populateData() with the Builder ----");
-        AccountRepositoryImpl accountRepository = new AccountRepositoryImpl();
-        accountRepository.populateData();
+        AccountRepositoryImpl accountRepository = AccountRepositoryImpl.getInstance();        accountRepository.populateData();
         accountRepository.findAll().forEach(System.out::println);
     }
 }

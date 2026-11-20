@@ -14,8 +14,7 @@ import java.util.function.Predicate;
  */
 public class JsonApp {
     public static void main(String[] args) {
-        AccountRepositoryImpl accountRepository = new AccountRepositoryImpl();
-        accountRepository.populateData();
+        AccountRepositoryImpl accountRepository = AccountRepositoryImpl.getInstance();        accountRepository.populateData();
         JsonSerializer<BankAccount> bankAccountJsonSerializer = new JsonSerializer<>();
 
         System.out.println("---- findAll() as JSON ----");

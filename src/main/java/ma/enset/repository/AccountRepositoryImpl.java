@@ -16,8 +16,22 @@ import java.util.function.Predicate;
  * @author Yousef ELHAID
  */
 public class AccountRepositoryImpl implements AccountRepository {
+    private static final AccountRepositoryImpl accountRepository;
+
+    static {
+        System.out.println("Singleton instantiation");
+        accountRepository = new AccountRepositoryImpl();
+    }
+
     private Map<Long, BankAccount> bankAccountMap = new HashMap<>();
     private long accountsCount = 0;
+
+    private AccountRepositoryImpl() {
+    }
+
+    public static AccountRepositoryImpl getInstance() {
+        return accountRepository;
+    }
 
     @Override
     public BankAccount save(BankAccount bankAccount) {
