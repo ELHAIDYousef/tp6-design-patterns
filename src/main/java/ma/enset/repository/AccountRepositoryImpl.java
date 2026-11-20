@@ -3,6 +3,7 @@ package ma.enset.repository;
 import ma.enset.model.AccountStatus;
 import ma.enset.model.AccountType;
 import ma.enset.model.BankAccount;
+import ma.enset.director.BankDirector;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,11 +59,12 @@ public class AccountRepositoryImpl implements AccountRepository {
 
     public void populateData() {
         for (int i = 0; i < 10; i++) {
-            BankAccount account = new BankAccount();
-            account.setBalance(10000 + Math.random() * 90000);
-            account.setType(Math.random() > 0.5 ? AccountType.SAVING_ACCOUNT : AccountType.CURRENT_ACCOUNT);
-            account.setStatus(Math.random() > 0.5 ? AccountStatus.CREATED : AccountStatus.ACTIVATED);
-            account.setCurrency(Math.random() > 0.5 ? "MAD" : "USD");
+            BankAccount account = BankDirector.accountBuilder()
+                    .balance(10000 + Math.random() * 90000)
+                    .type(Math.random() > 0.5 ? AccountType.SAVING_ACCOUNT : AccountType.CURRENT_ACCOUNT)
+                    .status(Math.random() > 0.5 ? AccountStatus.CREATED : AccountStatus.ACTIVATED)
+                    .currency(Math.random() > 0.5 ? "MAD" : "USD")
+                    .build();
             save(account);
         }
     }
